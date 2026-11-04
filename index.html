@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matamap — Pembuat Denah 2D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
+<header><h1>MATAMAP</h1><span>Denah 2D tampak atas</span>
+<nav><button id="nw" class="g">Baru</button><button id="exPng" class="w">Ekspor PNG 4K</button><button id="exPdf" class="r">Ekspor PDF 4K</button></nav></header>
+<main><aside>
+<section><h2>Proyek</h2><div class="g2"><button id="bUn" class="g">Undo</button><button id="bRe" class="g">Redo</button><button id="bSave" class="k">Simpan JSON</button><button id="bOpen" class="k">Buka JSON</button></div><input type="file" id="fOpen" accept=".json,application/json" hidden></section>
+<section><h2>Gambar di kanvas</h2>
+<button id="tSel" class="g wide on">Pilih / geser</button>
+<div id="shapes" class="g2"></div>
+<div class="g2"><label>Lebar (m)<input id="n_w" type="number" min="0.05" step="0.05" value="4"></label>
+<label>Tinggi (m)<input id="n_h" type="number" min="0.05" step="0.05" value="3"></label></div>
+<p id="hint"></p><p id="hint2">Roda mouse = zoom. Geser kanvas: tahan Spasi, atau klik kanan/tengah lalu seret. Ubah ukuran: seret kotak di tepi bidang. Putar: seret titik bulat (Shift = kelipatan 15°).</p></section>
+<section id="sel" hidden><h2>Bidang terpilih</h2>
+<label>Nama<input id="p_label"></label>
+<label>Kategori<select id="p_cat"></select></label>
+<div class="g2">
+<label>Lebar (m)<input id="p_w" type="number" step="0.05" min="0.05"></label>
+<label>Tinggi (m)<input id="p_h" type="number" step="0.05" min="0.05"></label>
+<label>Posisi X (m)<input id="p_x" type="number" step="0.05"></label>
+<label>Posisi Y (m)<input id="p_y" type="number" step="0.05"></label>
+<label>Rotasi (°)<input id="p_r" type="number" step="1"></label></div>
+<label class="ck"><input type="checkbox" id="p_dim"> Tampilkan ukuran</label>
+<div class="g3"><button id="b_dup" class="g">Duplikat</button><button id="b_up" class="w">Depan</button><button id="b_dn" class="w">Belakang</button></div>
+<button id="b_del" class="r wide">Hapus bidang</button></section>
+<section><h2>Ukuran denah</h2><div class="g3">
+<label>Lebar (m)<input id="s_W" type="number" min="1" step="0.5"></label>
+<label>Panjang (m)<input id="s_H" type="number" min="1" step="0.5"></label>
+<label>Grid (m)<input id="s_grid" type="number" min="0.1" step="0.1"></label></div>
+<label class="ck"><input type="checkbox" id="s_snap"> Tempel ke grid</label></section>
+<section><h2>Legenda</h2><div id="cats"></div><button id="addCat" class="k wide">+ Kategori</button></section>
+<section><h2>Informasi</h2>
+<label>Nama kegiatan<input id="i_act"></label>
+<label>Nama lokasi<input id="i_loc"></label>
+<label>Desainer<input id="i_des"></label>
+<label>Tanggal<input id="i_date" placeholder="mis. 12 Desember 2026"></label>
+<label>Keterangan<textarea id="i_note" rows="3"></textarea></label></section>
+</aside>
+<div id="stage"><canvas id="cv" width="2880" height="1620"></canvas><div id="zm"><button id="zo" class="w">−</button><span id="zl">100%</span><button id="zi" class="w">+</button><button id="zf" class="w">Fit</button></div></div></main>
+<script src="script.js"></script></body></html>
