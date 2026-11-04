@@ -51,7 +51,7 @@ Poin teknis:
 
 ## 2. Cara Menjalankan
 
-Akses lewat alamat `http://mataxmedia.github.oi/matamap`:
+Akses lewat alamat https://mataxmedia.github.io/matamap/
 
 
 ---
