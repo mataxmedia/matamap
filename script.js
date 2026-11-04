@@ -9,7 +9,11 @@ L:(w,h)=>[[-w/2,-h/2],[0,-h/2],[0,0],[w/2,0],[w/2,h/2],[-w/2,h/2]],
 poly:(w,h,it)=>it.pts.map(([a,b])=>[a*w,b*h])};
 let S={info:{act:'Nama Kegiatan',loc:'',des:'',date:'',note:''},W:20,H:12,grid:1,snap:true,nid:1,sel:null,
 cats:[{id:1,n:'Panggung',c:'#2e2e2e'},{id:2,n:'Area penonton',c:'#c9c9c9'},{id:3,n:'Properti',c:'#b36a66'},{id:4,n:'Akses / sirkulasi',c:'#f0f0f0'}],items:[]},drag=null;
+<<<<<<< HEAD
 
+=======
+try{const s=JSON.parse(localStorage.getItem('matadenah'));if(s&&s.cats)S=s}catch(e){}
+>>>>>>> 76ef1517af34458dcf0987a3fa44513adb026ffa
 S.sel=null;
 const cv=$('cv'),ctx=cv.getContext('2d'),cur=()=>S.items.find(i=>i.id===S.sel);
 const sn=v=>+(S.snap?Math.round(v/S.grid)*S.grid:v).toFixed(3);
@@ -19,12 +23,20 @@ function path(c,t,w,h,it){c.beginPath();if(t==='ellipse'){c.ellipse(0,0,w/2,h/2,
 P[t](w,h,it).forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.closePath()}
 function wrap(c,t,x,y,mw,lh,max){const o=[];String(t).split('\n').forEach(p=>{let l='';p.split(' ').forEach(w=>{const s=l?l+' '+w:w;if(c.measureText(s).width>mw&&l){o.push(l);l=w}else l=s});o.push(l)});
 o.slice(0,max).forEach((s,i)=>c.fillText(s,x,y+i*lh));return y+Math.min(o.length,max)*lh}
+<<<<<<< HEAD
 function lay(v){const f=Math.min(1112/S.W,852/S.H),z=v?V.z:1,bx=24+(1292-S.W*f)/2,by=24+(1032-S.H*f)/2;return{sc:f*z,ox:670+(bx-670)*z+(v?V.x:0),oy:540+(by-540)*z+(v?V.y:0)}}
+=======
+function lay(){const pad=90,sc=Math.min((1292-2*pad)/S.W,(1032-2*pad)/S.H);return{sc,ox:24+(1292-S.W*sc)/2,oy:24+(1032-S.H*sc)/2}}
+>>>>>>> 76ef1517af34458dcf0987a3fa44513adb026ffa
 
 function draw(c,k,ui){
 c.setTransform(k,0,0,k,0,0);c.fillStyle='#fff';c.fillRect(0,0,1920,1080);
 c.strokeStyle='#111';c.lineWidth=2;c.strokeRect(24,24,1872,1032);ln(c,1316,24,1316,1056);
+<<<<<<< HEAD
 const{sc,ox,oy}=lay(ui),pw=S.W*sc,ph=S.H*sc;let g=S.grid;while(g*sc<8)g*=2;c.save();c.beginPath();c.rect(25,25,1290,1030);c.clip();
+=======
+const{sc,ox,oy}=lay(),pw=S.W*sc,ph=S.H*sc;let g=S.grid;while(g*sc<8)g*=2;
+>>>>>>> 76ef1517af34458dcf0987a3fa44513adb026ffa
 c.lineWidth=1;
 for(let i=0;i*g<=S.W+1e-9;i++){c.strokeStyle=i%5?'#ececec':'#d0d0d0';ln(c,ox+i*g*sc,oy,ox+i*g*sc,oy+ph)}
 for(let i=0;i*g<=S.H+1e-9;i++){c.strokeStyle=i%5?'#ececec':'#d0d0d0';ln(c,ox,oy+i*g*sc,ox+pw,oy+i*g*sc)}
@@ -35,14 +47,22 @@ ln(c,ox-32,oy,ox-32,oy+ph);ln(c,ox-40,oy,ox-24,oy);ln(c,ox-40,oy+ph,ox-24,oy+ph)
 c.save();c.translate(ox-42,oy+ph/2);c.rotate(-Math.PI/2);c.fillText(S.H+' m',0,0);c.restore();
 S.items.forEach(it=>{const col=(S.cats.find(q=>q.id===it.c)||S.cats[0]).c,w=it.w*sc,h=it.h*sc,t=ox+it.x*sc,u=oy+it.y*sc;
 c.save();c.translate(t,u);c.rotate(it.r*Math.PI/180);path(c,it.t,w,h,it);c.fillStyle=col;c.fill();c.strokeStyle='#111';c.lineWidth=2;c.stroke();
+<<<<<<< HEAD
 if(ui&&it.id===S.sel){path(c,it.t,w+12,h+12,it);c.strokeStyle='#b36a66';c.lineWidth=3;c.setLineDash([10,6]);c.stroke();c.setLineDash([]);c.lineWidth=2;c.fillStyle='#fff';const a=w/2+6,b=h/2+6;ln(c,0,-b,0,-b-34);
 for(const sy of[-1,0,1])for(const sx of[-1,0,1])if(sx||sy){c.fillRect(sx*a-8,sy*b-8,16,16);c.strokeRect(sx*a-8,sy*b-8,16,16)}
 c.beginPath();c.arc(0,-b-34,10,0,7);c.fillStyle='#b36a66';c.fill()}
+=======
+if(ui&&it.id===S.sel){path(c,it.t,w+12,h+12,it);c.strokeStyle='#b36a66';c.lineWidth=3;c.setLineDash([10,6]);c.stroke()}
+>>>>>>> 76ef1517af34458dcf0987a3fa44513adb026ffa
 c.restore();
 const fs=Math.max(11,Math.min(22,Math.min(w,h)/5));c.fillStyle=dark(col)?'#fff':'#111';c.textAlign='center';c.textBaseline='middle';
 if(it.n){c.font='600 '+fs+'px '+F;c.fillText(it.n.toUpperCase(),t,u-(it.d?fs*.6:0))}
 if(it.d){c.font='400 '+fs*.85+'px '+F;c.fillText(it.w+' × '+it.h+' m',t,u+(it.n?fs*.7:0))}});
+<<<<<<< HEAD
 c.restore();
+=======
+// panel
+>>>>>>> 76ef1517af34458dcf0987a3fa44513adb026ffa
 const X=1348,PW=520;c.textAlign='left';c.textBaseline='alphabetic';
 let y=76;c.fillStyle='#b36a66';c.font='600 14px '+F;c.letterSpacing='3px';c.fillText('DENAH TAMPAK ATAS',X,y);c.letterSpacing='0px';
 y+=54;c.fillStyle='#111';c.font='700 44px '+F;y=wrap(c,(S.info.act||'—').toUpperCase(),X,y,PW,52,3);
@@ -58,7 +78,11 @@ c.strokeStyle='#111';c.lineWidth=2;c.strokeRect(X,985,bw,10);c.fillStyle='#111';
 c.font='600 15px '+F;c.fillText('0',X,976);c.fillText(L+' m',X+bw+12,995);
 c.fillStyle='#777';c.font='400 16px '+F;c.fillText('Ukuran denah '+S.W+' × '+S.H+' m',X,1030)}
 
+<<<<<<< HEAD
 function R(){draw(ctx,K,true);ov();$('zl').textContent=Math.round(V.z*100)+'%';clearTimeout(tm);tm=setTimeout(commit,400)}
+=======
+function R(){draw(ctx,K,true);ov();try{localStorage.setItem('matadenah',JSON.stringify(S))}catch(e){}}
+>>>>>>> 76ef1517af34458dcf0987a3fa44513adb026ffa
 function opts(){const s=$('p_cat'),v=s.value;s.innerHTML='';S.cats.forEach(k=>s.add(new Option(k.n||'(tanpa nama)',k.id)));s.value=v}
 function sync(){const it=cur();$('sel').hidden=!it;if(!it)return;opts();$('p_label').value=it.n;$('p_cat').value=it.c;
 ['w','h','x','y','r'].forEach(k=>$('p_'+k).value=it[k]);$('p_dim').checked=it.d}
@@ -74,6 +98,7 @@ $('addCat').onclick=()=>{S.cats.push({id:Math.max(...S.cats.map(q=>q.id))+1,n:'K
 ['act','loc','des','date','note'].forEach(k=>{const e=$('i_'+k);e.value=S.info[k];e.oninput=()=>{S.info[k]=e.value;R()}});
 ['W','H','grid'].forEach(k=>{const e=$('s_'+k);e.value=S[k];e.oninput=()=>{const v=parseFloat(e.value);if(v>0){S[k]=v;R()}}});
 $('s_snap').checked=S.snap;$('s_snap').onchange=e=>{S.snap=e.target.checked;R()};
+<<<<<<< HEAD
 let tool=null,dr=null,pts=[],mouse=null,rs=null,ro=false,pn=null,sp=false,V={z:1,x:0,y:0},hist=[],hi=-1,tm;
 const st=()=>JSON.stringify({...S,sel:null});
 function commit(){clearTimeout(tm);const j=st();if(j!==hist[hi]){hist=hist.slice(0,hi+1);hist.push(j);if(hist.length>100)hist.shift();hi=hist.length-1}}
@@ -81,13 +106,20 @@ function fill(){['act','loc','des','date','note'].forEach(k=>$('i_'+k).value=S.i
 function go(d){commit();const j=hi+d;if(j<0||j>=hist.length)return;hi=j;const sl=S.sel;S=JSON.parse(hist[j]);S.sel=S.items.some(i=>i.id===sl)?sl:null;fill();R()}
 function zoomAt(nz,sx,sy){nz=Math.max(.2,Math.min(40,nz));const l=lay(true),m=(sx-l.ox)/l.sc,n=(sy-l.oy)/l.sc;V.z=nz;V.x=V.y=0;const q=lay(true);V.x=sx-m*q.sc-q.ox;V.y=sy-n*q.sc-q.oy}
 function loc(x0,y0,r,m,n){const a=-r*Math.PI/180,dx=m-x0,dy=n-y0;return[dx*Math.cos(a)-dy*Math.sin(a),dx*Math.sin(a)+dy*Math.cos(a)]}
+=======
+let tool=null,dr=null,pts=[],mouse=null;
+>>>>>>> 76ef1517af34458dcf0987a3fa44513adb026ffa
 const HT={0:'Pilih bentuk, lalu seret di kanvas untuk menggambar, atau klik untuk meletakkan sesuai ukuran di atas.',1:'Seret di kanvas untuk menentukan ukuran, atau klik untuk meletakkan dengan ukuran di atas.',poly:'Klik untuk membuat titik. Tutup dengan klik titik awal, dobel klik, atau Enter. Esc untuk batal.'};
 function setTool(t){tool=t;pts=[];dr=null;[...$('shapes').children].forEach(b=>b.classList.toggle('on',b.dataset.t===t));$('tSel').classList.toggle('on',!t);
 cv.style.cursor=t?'crosshair':'default';$('hint').textContent=HT[t=='poly'?'poly':t?1:0];if(t&&DS[t]){$('n_w').value=DS[t][0];$('n_h').value=DS[t][1]}R()}
 function mk(t,x,y,w,h,ex){const f=v=>+v.toFixed(3),it={id:S.nid++,t,x:f(x),y:f(y),w:f(w),h:f(h),r:0,c:S.cats[0].id,n:NM[t],d:true,...ex};S.items.push(it);S.sel=it.id;sync()}
 function closePoly(){if(pts.length<3)return;const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]),x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys),w=x1-x0||.05,h=y1-y0||.05;
 mk('poly',(x0+x1)/2,(y0+y1)/2,w,h,{pts:pts.map(([a,b])=>[(a-x0)/w-.5,(b-y0)/h-.5])});setTool(null)}
+<<<<<<< HEAD
 function ov(){const{sc,ox,oy}=lay(true),c=ctx,X=v=>ox+v*sc,Y=v=>oy+v*sc;c.save();c.beginPath();c.rect(25,25,1290,1030);c.clip();c.setLineDash([8,5]);c.lineWidth=2.5;c.strokeStyle='#b36a66';c.fillStyle='rgba(179,106,102,.18)';c.font='700 15px '+F;c.textAlign='left';c.textBaseline='alphabetic';
+=======
+function ov(){const{sc,ox,oy}=lay(),c=ctx,X=v=>ox+v*sc,Y=v=>oy+v*sc;c.save();c.setLineDash([8,5]);c.lineWidth=2.5;c.strokeStyle='#b36a66';c.fillStyle='rgba(179,106,102,.18)';c.font='700 15px '+F;c.textAlign='left';c.textBaseline='alphabetic';
+>>>>>>> 76ef1517af34458dcf0987a3fa44513adb026ffa
 if(dr){const x=Math.min(dr.a,dr.m),y=Math.min(dr.b,dr.n),w=Math.abs(dr.m-dr.a),h=Math.abs(dr.n-dr.b);
 c.save();c.translate(X(x+w/2),Y(y+h/2));path(c,tool,w*sc,h*sc);c.fill();c.stroke();c.restore();
 c.setLineDash([]);c.fillStyle='#b36a66';c.fillText(w.toFixed(2)+' × '+h.toFixed(2)+' m',X(dr.m)+12,Y(dr.n)-10)}
@@ -106,12 +138,17 @@ $('b_del').onclick=del;
 $('b_dup').onclick=()=>{const i=cur();if(!i)return;const n={...i,id:S.nid++,x:+(i.x+S.grid).toFixed(3),y:+(i.y+S.grid).toFixed(3)};S.items.push(n);S.sel=n.id;sync();R()};
 const mv=d=>{const i=cur(),x=S.items.indexOf(i),y=x+d;if(!i||y<0||y>=S.items.length)return;S.items.splice(x,1);S.items.splice(y,0,i);R()};
 $('b_up').onclick=()=>mv(1);$('b_dn').onclick=()=>mv(-1);
+<<<<<<< HEAD
 $('nw').onclick=()=>{if(confirm('Mulai denah baru? Pekerjaan yang belum disimpan akan hilang.')){location.reload()}};
+=======
+$('nw').onclick=()=>{if(confirm('Hapus semua dan mulai denah baru?')){try{localStorage.removeItem('matadenah')}catch(e){}location.reload()}};
+>>>>>>> 76ef1517af34458dcf0987a3fa44513adb026ffa
 
 function inP(x,y,p){let o=false;for(let i=0,j=p.length-1;i<p.length;j=i++){const[a,b]=p[i],[d,e]=p[j];if((b>y)!=(e>y)&&x<(d-a)*(y-b)/(e-b)+a)o=!o}return o}
 function hit(mx,my){for(let i=S.items.length-1;i>=0;i--){const it=S.items[i],a=-it.r*Math.PI/180,dx=mx-it.x,dy=my-it.y,
 x=dx*Math.cos(a)-dy*Math.sin(a),y=dx*Math.sin(a)+dy*Math.cos(a);
 if(it.t==='ellipse'?(x/(it.w/2))**2+(y/(it.h/2))**2<=1:inP(x,y,P[it.t](it.w,it.h,it)))return it}return null}
+<<<<<<< HEAD
 function pt(e){const r=cv.getBoundingClientRect(),{sc,ox,oy}=lay(true);return[((e.clientX-r.left)*1920/r.width-ox)/sc,((e.clientY-r.top)*1080/r.height-oy)/sc]}
 cv.onpointerdown=e=>{if(e.button==1||e.button==2||sp){pn={x:e.clientX,y:e.clientY,vx:V.x,vy:V.y};cv.setPointerCapture(e.pointerId);cv.style.cursor='grabbing';return}const[m,n]=pt(e);
 if(tool=='poly'){const p=[sn(m),sn(n)],q=pts[pts.length-1];
@@ -150,6 +187,25 @@ onkeyup=e=>{if(e.code=='Space'){sp=false;cv.style.cursor=tool?'crosshair':'defau
 onkeydown=e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.key=='Escape'){setTool(null);return}if(e.key=='Enter'&&tool=='poly'){closePoly();return}
 if((e.ctrlKey||e.metaKey)&&/^[zy]$/i.test(e.key)){e.preventDefault();go(e.key.toLowerCase()=='y'||e.shiftKey?1:-1);return}
 if(e.code=='Space'){e.preventDefault();sp=true;cv.style.cursor='grab';return}const it=cur();if(!it)return;
+=======
+function pt(e){const r=cv.getBoundingClientRect(),{sc,ox,oy}=lay();return[((e.clientX-r.left)*1920/r.width-ox)/sc,((e.clientY-r.top)*1080/r.height-oy)/sc]}
+cv.onpointerdown=e=>{const[m,n]=pt(e);
+if(tool=='poly'){const p=[sn(m),sn(n)],q=pts[pts.length-1];
+if(pts.length>2&&Math.hypot(p[0]-pts[0][0],p[1]-pts[0][1])<=12/lay().sc){closePoly();return}
+if(!q||q[0]!=p[0]||q[1]!=p[1])pts.push(p);R();return}
+if(tool){dr={a:sn(m),b:sn(n),m:sn(m),n:sn(n)};cv.setPointerCapture(e.pointerId);R();return}
+const it=hit(m,n);S.sel=it?it.id:null;
+if(it){drag={dx:m-it.x,dy:n-it.y};cv.setPointerCapture(e.pointerId)}sync();R()};
+cv.onpointermove=e=>{const[m,n]=pt(e);mouse=[sn(m),sn(n)];
+if(dr){dr.m=mouse[0];dr.n=mouse[1];R()}
+else if(drag){const it=cur();it.x=sn(m-drag.dx);it.y=sn(n-drag.dy);$('p_x').value=it.x;$('p_y').value=it.y;R()}
+else if(tool=='poly'&&pts.length)R()};
+cv.onpointerup=()=>{drag=null;if(!dr)return;const w=Math.abs(dr.m-dr.a),h=Math.abs(dr.n-dr.b);
+if(w<.05||h<.05)mk(tool,dr.a,dr.b,+$('n_w').value||4,+$('n_h').value||3);else mk(tool,(dr.a+dr.m)/2,(dr.b+dr.n)/2,w,h);
+setTool(null)};
+cv.ondblclick=()=>{if(tool=='poly')closePoly()};
+onkeydown=e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.key=='Escape'){setTool(null);return}if(e.key=='Enter'&&tool=='poly'){closePoly();return}const it=cur();if(!it)return;
+>>>>>>> 76ef1517af34458dcf0987a3fa44513adb026ffa
 if(e.key=='Delete'||e.key=='Backspace'){del();return}
 const m={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[e.key];
 if(m){e.preventDefault();const s=S.snap?S.grid:.1;it.x=+(it.x+m[0]*s).toFixed(3);it.y=+(it.y+m[1]*s).toFixed(3);sync();R()}};
@@ -170,4 +226,8 @@ add(`trailer\n<</Size 6/Root 1 0 R>>\nstartxref\n${x}\n%%EOF`);return new Blob(p
 $('exPng').onclick=()=>big().toBlob(b=>dl(b,slug()+'.png'));
 $('exPdf').onclick=()=>big().toBlob(async b=>dl(pdf(new Uint8Array(await b.arrayBuffer()),3840,2160),slug()+'.pdf'),'image/jpeg',.95);
 
+<<<<<<< HEAD
 catsUI();sync();setTool(null);commit();
+=======
+catsUI();sync();setTool(null);
+>>>>>>> 76ef1517af34458dcf0987a3fa44513adb026ffa
