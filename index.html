@@ -3,7 +3,7 @@
 <title>Matamap — Pembuat Denah 2D</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css"></head><body>
+<link rel="stylesheet" href="style.css?v=3"></head><body>
 <header><h1>MATAMAP</h1><span>Denah 2D tampak atas</span>
 <nav><button id="nw" class="g">Baru</button><button id="exPng" class="w">Ekspor PNG 4K</button><button id="exPdf" class="r">Ekspor PDF 4K</button></nav></header>
 <main><aside>
@@ -13,7 +13,7 @@
 <div id="shapes" class="g2"></div>
 <div class="g2"><label>Lebar (m)<input id="n_w" type="number" min="0.05" step="0.05" value="4"></label>
 <label>Tinggi (m)<input id="n_h" type="number" min="0.05" step="0.05" value="3"></label></div>
-<p id="hint"></p><p id="hint2">Roda mouse = zoom. Geser kanvas: tahan Spasi, atau klik kanan/tengah lalu seret. Ubah ukuran: seret kotak di tepi bidang. Putar: seret titik bulat (Shift = kelipatan 15°).</p></section>
+<p id="hint"></p><p id="hint2">Roda mouse = zoom. Geser kanvas: tombol Geser (kanan bawah), atau tahan Spasi, atau klik kanan/tengah lalu seret. Ubah ukuran: seret kotak di tepi bidang. Putar: seret titik bulat (Shift = kelipatan 15°).</p></section>
 <section id="sel" hidden><h2>Bidang terpilih</h2>
 <label>Nama<input id="p_label"></label>
 <label>Kategori<select id="p_cat"></select></label>
@@ -39,5 +39,5 @@
 <label>Tanggal<input id="i_date" placeholder="mis. 12 Desember 2026"></label>
 <label>Keterangan<textarea id="i_note" rows="3"></textarea></label></section>
 </aside>
-<div id="stage"><canvas id="cv" width="2880" height="1620"></canvas><div id="zm"><button id="zo" class="w">−</button><span id="zl">100%</span><button id="zi" class="w">+</button><button id="zf" class="w">Fit</button></div></div></main>
-<script src="script.js"></script></body></html>
+<div id="stage"><canvas id="cv" width="2880" height="1620"></canvas><div id="zm"><button id="zo" class="w">−</button><span id="zl">100%</span><button id="zi" class="w">+</button><button id="zf" class="w">Fit</button><button id="zh" class="w">Geser</button></div></div></main>
+<script src="script.js?v=3"></script></body></html>
