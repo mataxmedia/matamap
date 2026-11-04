@@ -4,17 +4,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=3"></head><body>
-<header><h1>MATAMAP</h1><span>Denah 2D tampak atas</span>
-<nav><button id="nw" class="g">Baru</button><button id="exPng" class="w">Ekspor PNG 4K</button><button id="exPdf" class="r">Ekspor PDF 4K</button></nav></header>
+<header><h1>MATAMAP</h1><span>Pembuat Denah 2D</span>
+<nav><button id="nw" class="g">Baru</button><button id="exPng" class="w">Ekspor PNG</button><button id="exPdf" class="r">Ekspor PDF</button></nav></header>
 <main><aside>
-<section><h2>Proyek</h2><div class="g2"><button id="bUn" class="g">Undo</button><button id="bRe" class="g">Redo</button><button id="bSave" class="k">Simpan JSON</button><button id="bOpen" class="k">Buka JSON</button></div><input type="file" id="fOpen" accept=".json,application/json" hidden></section>
-<section><h2>Gambar di kanvas</h2>
-<button id="tSel" class="g wide on">Pilih / geser</button>
+<section><h2>Proyek</h2><div class="g2"><button id="bUn" class="g">Undo</button><button id="bRe" class="g">Redo</button><button id="bSave" class="k">Simpan</button><button id="bOpen" class="k">Buka JSON</button></div><input type="file" id="fOpen" accept=".json,application/json" hidden></section>
+<section><h2>Gambar di Kanvas</h2>
+<button id="tSel" class="g wide on">Pilih / Geser</button>
 <div id="shapes" class="g2"></div>
 <div class="g2"><label>Lebar (m)<input id="n_w" type="number" min="0.05" step="0.05" value="4"></label>
 <label>Tinggi (m)<input id="n_h" type="number" min="0.05" step="0.05" value="3"></label></div>
 <p id="hint"></p><p id="hint2">Roda mouse = zoom. Geser kanvas: tombol Geser (kanan bawah), atau tahan Spasi, atau klik kanan/tengah lalu seret. Ubah ukuran: seret kotak di tepi bidang. Putar: seret titik bulat (Shift = kelipatan 15°).</p></section>
-<section id="sel" hidden><h2>Bidang terpilih</h2>
+<section id="sel" hidden><h2>Bidang Terpilih</h2>
 <label>Nama<input id="p_label"></label>
 <label>Kategori<select id="p_cat"></select></label>
 <div class="g2">
@@ -30,11 +30,11 @@
 <label>Lebar (m)<input id="s_W" type="number" min="1" step="0.5"></label>
 <label>Panjang (m)<input id="s_H" type="number" min="1" step="0.5"></label>
 <label>Grid (m)<input id="s_grid" type="number" min="0.1" step="0.1"></label></div>
-<label class="ck"><input type="checkbox" id="s_snap"> Tempel ke grid</label></section>
+<label class="ck"><input type="checkbox" id="s_snap"> Tempel ke Grid</label></section>
 <section><h2>Legenda</h2><div id="cats"></div><button id="addCat" class="k wide">+ Kategori</button></section>
 <section><h2>Informasi</h2>
-<label>Nama kegiatan<input id="i_act"></label>
-<label>Nama lokasi<input id="i_loc"></label>
+<label>Nama Kegiatan<input id="i_act"></label>
+<label>Nama Lokasi<input id="i_loc"></label>
 <label>Desainer<input id="i_des"></label>
 <label>Tanggal<input id="i_date" placeholder="mis. 12 Desember 2026"></label>
 <label>Keterangan<textarea id="i_note" rows="3"></textarea></label></section>
