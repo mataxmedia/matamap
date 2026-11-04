@@ -23,7 +23,6 @@ button.w{background:#fff;border-color:var(--k);color:var(--k)}
 button.on{background:var(--r);border-color:var(--r);color:#fff}
 .wide{width:100%;margin-bottom:8px}
 #shapes button[data-t=poly]{grid-column:1/-1}
-<<<<<<< HEAD
 #hint,#hint2{font-size:11px;color:#666;margin-top:4px}
 .cat{display:flex;gap:6px;margin-bottom:6px}
 .cat input{margin:0}.cat input[type=color]{width:42px;height:34px;padding:2px;flex:none}
@@ -35,13 +34,3 @@ canvas{width:min(100%,calc((100vh - 96px)*16/9));height:auto;aspect-ratio:16/9;b
 #hint2{margin-top:6px}
 #zm{position:absolute;right:24px;bottom:24px;display:flex;gap:6px;align-items:center;background:#fff;border:1px solid var(--k);padding:6px}
 #zm span{min-width:52px;text-align:center;font-weight:700}
-=======
-#hint{font-size:11px;color:#666;margin-top:4px}
-.cat{display:flex;gap:6px;margin-bottom:6px}
-.cat input{margin:0}.cat input[type=color]{width:42px;height:34px;padding:2px;flex:none}
-.cat button{width:34px;padding:0;background:#fff;color:var(--r);border-color:var(--r)}
-#stage{flex:1;display:flex;align-items:center;justify-content:center;padding:20px;min-width:0}
-canvas{width:min(100%,calc((100vh - 96px)*16/9));height:auto;aspect-ratio:16/9;background:#fff;box-shadow:0 2px 24px rgba(0,0,0,.15);touch-action:none}
-[hidden]{display:none!important}
-@media(max-width:860px){main{flex-direction:column}aside{width:100%;max-height:45vh;border-right:0}}
->>>>>>> 76ef1517af34458dcf0987a3fa44513adb026ffa

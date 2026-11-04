@@ -1,4 +1,4 @@
-const $=id=>document.getElementById(id),F='Arial,Helvetica,sans-serif',K=1.5;
+const $=id=>document.getElementById(id),F='Space Mono,ui-monospace,monospace',K=1.5;
 const NM={rect:'Persegi',ellipse:'Elips',tri:'Segitiga',trap:'Trapesium',hex:'Segi enam',L:'Bentuk L',poly:'Poligon'};
 const DS={rect:[4,3],ellipse:[3,3],tri:[3,3],trap:[4,3],hex:[3,3],L:[4,4]};
 const P={rect:(w,h)=>[[-w/2,-h/2],[w/2,-h/2],[w/2,h/2],[-w/2,h/2]],
